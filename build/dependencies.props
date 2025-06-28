@@ -1,0 +1,82 @@
+<Project>
+
+	<PropertyGroup>
+		<NetCoreVersion>3.1.*</NetCoreVersion>
+		<BetCommonVersion>4.0.*</BetCommonVersion>
+		<ServiceModelVersion>4.10.*</ServiceModelVersion>
+	</PropertyGroup>
+
+	<PropertyGroup
+		Condition="'$(TargetFramework)' == 'net8.0' Or '$(TargetFramework)' == 'netstandard2.0'">
+		<NetCoreVersion>8.0.*</NetCoreVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Microsoft.Extensions.Logging.Abstractions" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Microsoft.Extensions.Logging" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Microsoft.Extensions.Hosting" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Microsoft.Extensions.Http.Polly" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Microsoft.Extensions.Configuration" Version="$(NetCoreVersion)" />
+	</ItemGroup>
+
+	<ItemGroup Label="Microsoft">
+		<PackageReference Update="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
+		<PackageReference Update="Microsoft.Azure.ServiceBus" Version="5.1.0" />
+		<PackageReference Update="Microsoft.Azure.Storage.Blob" Version="11.2.2" />
+		<PackageReference Update="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Update="System.ServiceModel.Duplex" Version="$(ServiceModelVersion)" />
+		<PackageReference Update="System.ServiceModel.Http" Version="$(ServiceModelVersion)" />
+		<PackageReference Update="System.ServiceModel.NetTcp" Version="$(ServiceModelVersion)" />
+		<PackageReference Update="System.ServiceModel.Security" Version="$(ServiceModelVersion)" />
+	</ItemGroup>
+
+	<ItemGroup Label="Bet">
+		<PackageReference Update="Bet.Extensions" Version="$(BetCommonVersion)" />
+		<PackageReference Update="Bet.Extensions.Options" Version="$(BetCommonVersion)" />
+		<PackageReference Update="Bet.Extensions.AzureVault" Version="$(BetCommonVersion)" />
+		<PackageReference Update="Bet.Extensions.Testing" Version="$(BetCommonVersion)" />
+		<PackageReference Update="Bet.Extensions.Logging" Version="$(BetCommonVersion)" />
+	</ItemGroup>
+
+	<ItemGroup Label="Others">
+		<PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Update="Ardalis.SmartEnum" Version="2.1.0" />
+	    <PackageReference Update="Swashbuckle.AspNetCore" Version="6.5.*" />
+		<PackageReference Update="Humanizer" Version="2.14.1" />
+	</ItemGroup>
+
+	<ItemGroup Label="Unit Tests">
+		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.5.*" />
+		<PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(NetCoreVersion)" />
+		<PackageReference Update="Moq" Version="4.18.*" />
+		<PackageReference Update="xunit" Version="2.4.*" />
+		<PackageReference Update="xunit.runner.visualstudio" Version="2.4.*" PrivateAssets="All" />
+		<PackageReference Update="coverlet.collector" Version="3.2.*" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup Label="SourceLink">
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup Label="Analyzers">
+		<PackageReference Include="Bet.CodeAnalyzers" Version="1.0.12" PrivateAssets="All" />
+		<PackageReference Include="Bet.EditorConfig" Version="1.0.12" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="../../img/icon.png" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+	<!-- Workaround for this bug (replace the analyzer name with the one you need to exclude (filename only, no extension) -->
+	<Target Name="RemoveLoggingAnalyzer" BeforeTargets="CoreCompile">
+		<ItemGroup>
+			<Analyzer Remove="@(Analyzer)" Condition="%(FileName) == 'Microsoft.Extensions.Logging.Generators'" />
+		</ItemGroup>
+	</Target>
+
+</Project>

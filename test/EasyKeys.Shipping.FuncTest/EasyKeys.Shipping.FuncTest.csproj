@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\ek_logo_main4 %28Custom%29.gif" />
+    <None Remove="Images\signature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\ek_logo_main4 (Custom).gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\signature.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Bet.Extensions.Testing" />
+    <PackageReference Include="Bet.Extensions.AzureVault" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Using Include="Xunit.Abstractions" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Amazon.Rates\EasyKeys.Shipping.Amazon.Rates.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Amazon.Shipment\EasyKeys.Shipping.Amazon.Shipment.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.DHL.AddressValidation\EasyKeys.Shipping.DHL.AddressValidation.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.DHL.Rates\EasyKeys.Shipping.DHL.Rates.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.DHL.Shipment\EasyKeys.Shipping.DHL.Shipment.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.FedEx.AddressValidation\EasyKeys.Shipping.FedEx.AddressValidation.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.FedEx.Rates\EasyKeys.Shipping.FedEx.Rates.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.FedEx.Shipment\EasyKeys.Shipping.FedEx.Shipment.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.FedEx.Tracking\EasyKeys.Shipping.FedEx.Tracking.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.FedEx.UploadDocument\EasyKeys.Shipping.FedEx.UploadDocument.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.PostalAddress\EasyKeys.Shipping.PostalAddress.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Stamps.AddressValidation\EasyKeys.Shipping.Stamps.AddressValidation.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Stamps.Rates\EasyKeys.Shipping.Stamps.Rates.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Stamps.Shipment\EasyKeys.Shipping.Stamps.Shipment.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Stamps.Tracking\EasyKeys.Shipping.Stamps.Tracking.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Usps.Rates\EasyKeys.Shipping.Usps.Rates.csproj" />
+    <ProjectReference Include="..\..\src\EasyKeys.Shipping.Usps.Tracking\EasyKeys.Shipping.Usps.Tracking.csproj" />
+  </ItemGroup>
+</Project>

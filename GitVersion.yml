@@ -1,0 +1,16 @@
+mode: ContinuousDelivery
+next-version: 6.3.8
+increment: Patch
+major-version-bump-message: '\+semver:\s?(breaking|major|release)'
+minor-version-bump-message: '\+semver:\s?(feat|feature|minor)'
+commit-message-incrementing: Enabled
+
+branches:
+  feature:
+    tag: preview
+    increment: patch
+  master:
+    regex: master
+    tag: ""
+ignore:
+  sha: []
