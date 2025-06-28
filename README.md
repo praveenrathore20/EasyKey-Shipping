@@ -102,6 +102,3 @@ If you like or are using this project please give it a star. Thanks!
 ```
 
 ## References
-
-- https://github.com/leoboles/Integration.Stamps.git
-- https://github.com/oparamo/StampsService.git
